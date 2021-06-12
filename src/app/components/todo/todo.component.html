@@ -1,0 +1,19 @@
+<div class="card mt-3">
+    <form (submit)="addTodo(title)">
+        <div class="mb-3">
+            <input type="text" name="title" class="form-control" placeholder="lorem..." #title>
+        </div>
+        <button class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i></button>
+    </form>
+</div>
+
+<ul class="list-group mt-5">
+    <li *ngFor="let todo of todoListArray" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center mb-2">
+        <span (click)="updateTodo(todo.$key,todo.isChecked)" [class.text.success]="todo.isChecked">
+            <i [ngClass]="todo.isChecked ? 'fa fa-check-circle': 'fa fa-circle' "></i>
+        </span>
+        {{todo.title}} 
+        <span  (click)="removeTodo(todo.$key)"><i class="fa fa-trash"></i></span>
+    </li>
+</ul>
+<!-- min 43 -->
